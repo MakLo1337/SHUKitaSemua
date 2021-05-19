@@ -1,8 +1,10 @@
-package com.example.shu_kita_semua;
+package com.shukitasemua.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.shukitasemua.app.R;
 
 public class edit_koperasi extends AppCompatActivity {
 
