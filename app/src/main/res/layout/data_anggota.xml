@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        app:cardBackgroundColor="#5DDC30"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp"
+        app:cardMaxElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/main_nama"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="9dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Nama Anggota"
+                android:textColor="#FDFCFC"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Anggota"
+                android:textColor="#FFFEFE"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="@+id/main_nama"
+                app:layout_constraintHorizontal_bias="0.093"
+                app:layout_constraintStart_toStartOf="@+id/main_nama"
+                app:layout_constraintTop_toBottomOf="@+id/main_nama" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="35dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="Simpanan"
+                android:textColor="#FDFBFB"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/main_simpanan"
+                app:layout_constraintStart_toStartOf="@+id/main_simpanan"
+                app:layout_constraintTop_toBottomOf="@+id/main_simpanan"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/main_simpanan"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="count"
+                android:textColor="#FAFAFA"
+                android:textSize="30sp"
+                app:layout_constraintStart_toStartOf="@+id/textView14"
+                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Pembelian"
+                android:textColor="#F4EFEF"
+                app:layout_constraintBottom_toBottomOf="@+id/textView15"
+                app:layout_constraintStart_toStartOf="@+id/main_pembelian"
+                app:layout_constraintTop_toBottomOf="@+id/main_pembelian"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/main_pembelian"
+                android:layout_width="0dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="104dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="sans-serif-condensed"
+                android:shadowColor="#DC1313"
+                android:text="count"
+                android:textColor="#FDF3F3"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/main_simpanan"
+                app:layout_constraintTop_toTopOf="@+id/main_simpanan" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:text="RP."
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="@+id/main_simpanan"
+                app:layout_constraintEnd_toStartOf="@+id/main_simpanan"
+                app:layout_constraintTop_toTopOf="@+id/main_simpanan" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="2dp"
+                android:text="RP."
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="@+id/main_pembelian"
+                app:layout_constraintEnd_toStartOf="@+id/main_pembelian"
+                app:layout_constraintHorizontal_bias="0.707"
+                app:layout_constraintStart_toEndOf="@+id/main_simpanan"
+                app:layout_constraintTop_toTopOf="@+id/main_pembelian"
+                app:layout_constraintVertical_bias="0.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
