@@ -4,16 +4,16 @@
     <item
         android:id="@+id/item1"
         android:title="home"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_baseline_home_24"
         />
     <item
         android:id="@+id/item2"
         android:title="anggota"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_baseline_card_membership_24"
         />
     <item
         android:id="@+id/item3"
         android:title="hasil"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_baseline_analytics_24"
         />
 </menu>
