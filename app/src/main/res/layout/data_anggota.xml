@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
-        app:cardBackgroundColor="#5DDC30"
+        app:cardBackgroundColor="#9BA5E4"
         app:cardCornerRadius="20dp"
         app:cardElevation="5dp"
         app:cardMaxElevation="10dp"
@@ -27,113 +27,102 @@
                 android:id="@+id/main_nama"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="9dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
-                android:layout_marginEnd="9dp"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/poppins_bold"
                 android:text="Nama Anggota"
                 android:textColor="#FDFCFC"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.2"
+                android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Anggota"
-                android:textColor="#FFFEFE"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="@+id/main_nama"
-                app:layout_constraintHorizontal_bias="0.093"
-                app:layout_constraintStart_toStartOf="@+id/main_nama"
-                app:layout_constraintTop_toBottomOf="@+id/main_nama" />
 
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="35dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:text="Simpanan"
                 android:textColor="#FDFBFB"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/main_simpanan"
-                app:layout_constraintStart_toStartOf="@+id/main_simpanan"
-                app:layout_constraintTop_toBottomOf="@+id/main_simpanan"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/main_simpanan"
-                android:layout_width="0dp"
-                android:layout_height="38dp"
-                android:layout_marginStart="52dp"
-                android:layout_marginTop="40dp"
-                android:fontFamily="sans-serif-condensed"
-                android:text="count"
-                android:textColor="#FAFAFA"
-                android:textSize="30sp"
-                app:layout_constraintStart_toStartOf="@+id/textView14"
-                app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="sans-serif-black"
-                android:text="Pembelian"
-                android:textColor="#F4EFEF"
-                app:layout_constraintBottom_toBottomOf="@+id/textView15"
-                app:layout_constraintStart_toStartOf="@+id/main_pembelian"
-                app:layout_constraintTop_toBottomOf="@+id/main_pembelian"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <TextView
-                android:id="@+id/main_pembelian"
-                android:layout_width="0dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="104dp"
-                android:layout_marginEnd="30dp"
-                android:fontFamily="sans-serif-condensed"
-                android:shadowColor="#DC1313"
-                android:text="count"
-                android:textColor="#FDF3F3"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/main_simpanan"
-                app:layout_constraintTop_toTopOf="@+id/main_simpanan" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/main_nama" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:text="RP."
-                android:textSize="30sp"
-                app:layout_constraintBottom_toBottomOf="@+id/main_simpanan"
-                app:layout_constraintEnd_toStartOf="@+id/main_simpanan"
-                app:layout_constraintTop_toTopOf="@+id/main_simpanan" />
+                android:layout_marginTop="8dp"
+                android:text="TextView"
+                android:textColor="#FFFFFF"
+                app:layout_constraintStart_toStartOf="@+id/textView15"
+                app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="25dp"
-                android:layout_marginEnd="2dp"
-                android:text="RP."
-                android:textSize="30sp"
-                app:layout_constraintBottom_toBottomOf="@+id/main_pembelian"
-                app:layout_constraintEnd_toStartOf="@+id/main_pembelian"
-                app:layout_constraintHorizontal_bias="0.707"
-                app:layout_constraintStart_toEndOf="@+id/main_simpanan"
-                app:layout_constraintTop_toTopOf="@+id/main_pembelian"
-                app:layout_constraintVertical_bias="0.0" />
+                android:layout_marginStart="128dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="Pembelian"
+                android:textColor="#FDFBFB"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/textView15"
+                app:layout_constraintTop_toBottomOf="@+id/main_nama" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                android:text="TextView"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView11"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="54dp"
+                android:layout_height="29dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:backgroundTint="#FF0000"
+                android:capitalize="none"
+                android:fontFamily="@font/poppins"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                android:text="Hapus"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/main_nama"
+                app:layout_constraintTop_toTopOf="@+id/main_nama" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="54dp"
+                android:layout_height="29dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:backgroundTint="#448AFF"
+                android:fontFamily="@font/poppins"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                android:text="Ubah"
+                android:textAllCaps="false"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/button3"
+                app:layout_constraintTop_toTopOf="@+id/main_nama" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

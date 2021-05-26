@@ -11,14 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="19dp"
-        android:background="@color/purple_700"
+        android:background="#303F9F"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Koperasi Data Edit" />
+        app:title="Ubah Informasi Koperasi"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -29,8 +30,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        app:cardBackgroundColor="#2A93CC"
-        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="#9BA5E4"
+        app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
