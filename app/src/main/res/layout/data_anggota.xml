@@ -50,7 +50,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/main_nama" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/main_simpanan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -73,7 +73,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/main_nama" />
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/main_pembelian"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

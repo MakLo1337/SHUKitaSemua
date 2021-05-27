@@ -78,7 +78,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <android.widget.Button
-        android:id="@+id/button2"
+        android:id="@+id/tambah_button"
         android:layout_width="144dp"
         android:layout_height="67dp"
         android:layout_marginStart="5dp"
