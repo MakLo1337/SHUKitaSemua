@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -67,7 +68,7 @@ private RVAAdapter adapter;
         recyclerView_recyclerView.setLayoutManager(manager);
         recyclerView_recyclerView.setAdapter(adapter);
 
-        String url = "http://192.168.1.3/progtech_SHUkitasemua/ReadAllBarang.php";
+        String url = "http://158.140.167.137/progtech_SHUkitasemua/ReadAllBarang.php";
         RequestQueue myQueue = Volley.newRequestQueue(getActivity());
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
