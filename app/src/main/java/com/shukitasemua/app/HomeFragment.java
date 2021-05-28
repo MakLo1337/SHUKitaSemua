@@ -47,6 +47,7 @@ private RVAAdapter adapter;
          View view = inflater.inflate(R.layout.fragment_home, container, false);
         //komponen
 
+
         return view;
 
 
@@ -62,11 +63,11 @@ private RVAAdapter adapter;
         dataanggota = new ArrayList<anggota>();
         adapter = new RVAAdapter(dataanggota);
 
-        RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(getActivity());
         recyclerView_recyclerView.setLayoutManager(manager);
         recyclerView_recyclerView.setAdapter(adapter);
 
-        String url =  "http://192.168.100.4/progtech_SHUkitasemua/ReadAllBarang.php";
+        String url = "http://192.168.1.3/progtech_SHUkitasemua/ReadAllBarang.php";
         RequestQueue myQueue = Volley.newRequestQueue(getActivity());
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -75,10 +76,10 @@ private RVAAdapter adapter;
                     public void onResponse(JSONObject response) {
                         try {
                             JSONArray jsonAnggota = response.getJSONArray("anggota");
-                            for(int i = 0; i < jsonAnggota.length(); i++){
+                            for (int i = 0; i < jsonAnggota.length(); i++) {
                                 JSONObject objAnggota = jsonAnggota.getJSONObject(i);
                                 anggota anggotabaru = new anggota();
-                                anggotabaru.setId(objAnggota.getInt("id"));
+//                                anggotabaru.setId(objAnggota.getInt("id"));
                                 anggotabaru.setNama(objAnggota.getString("nama"));
                                 anggotabaru.setSimpanan(objAnggota.getDouble("simpanan"));
                                 anggotabaru.setPembelian(objAnggota.getDouble("pembelian"));
