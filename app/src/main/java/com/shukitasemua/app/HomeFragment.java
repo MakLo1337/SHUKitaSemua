@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import model.anggota;
 
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements OnCardListener {
 
 
 private Button edit_kops;
@@ -62,7 +62,7 @@ private RVAAdapter adapter;
         edit_kops = view.findViewById(R.id.edit_kops);
         recyclerView_recyclerView = view.findViewById(R.id.recyclerView_recyclerView);
         dataanggota = new ArrayList<anggota>();
-        adapter = new RVAAdapter(dataanggota);
+        adapter = new RVAAdapter(dataanggota, this);
 
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getActivity());
         recyclerView_recyclerView.setLayoutManager(manager);
@@ -84,7 +84,7 @@ private RVAAdapter adapter;
                                 anggotabaru.setNama(objAnggota.getString("nama"));
                                 anggotabaru.setSimpanan(objAnggota.getDouble("simpanan"));
                                 anggotabaru.setPembelian(objAnggota.getDouble("pembelian"));
-//                                anggotabaru.setJumlah(objAnggota.getDouble("jumlah"));
+                                anggotabaru.setJumlah(objAnggota.getDouble("jumlah"));
                                 dataanggota.add(anggotabaru);
 
                             }
@@ -115,5 +115,10 @@ private RVAAdapter adapter;
     }
 
 
+    @Override
+    public void OnCardClick(int position) {
+        int id = dataanggota.get(position).getId();
 
+
+    }
 }

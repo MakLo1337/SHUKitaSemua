@@ -20,10 +20,10 @@ public class RVAAdapter extends RecyclerView.Adapter<RVAAdapter.ViewHolder>{
     protected OnCardListener cardListener;
 
 
-    public RVAAdapter(ArrayList<anggota> listanggota) {
-
+    public RVAAdapter(ArrayList<anggota> listanggota, OnCardListener onCardListener) {
+        this.cardListener = onCardListener;
         this.listanggota = listanggota;
-        this.cardListener = cardListener;
+
     }
 
     @NonNull
@@ -53,6 +53,13 @@ public class RVAAdapter extends RecyclerView.Adapter<RVAAdapter.ViewHolder>{
             main_nama = itemView.findViewById(R.id.main_nama);
             main_simpanan = itemView.findViewById(R.id.main_simpanan);
             main_pembelian = itemView.findViewById(R.id.main_pembelian);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    cardListener.OnCardClick(getAdapterPosition());
+                }
+            });
         }
     }
 }
