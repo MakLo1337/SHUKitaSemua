@@ -17,10 +17,13 @@ import model.anggota;
 
 public class RVAAdapter extends RecyclerView.Adapter<RVAAdapter.ViewHolder>{
     private ArrayList<anggota> listanggota;
+    protected OnCardListener cardListener;
 
 
     public RVAAdapter(ArrayList<anggota> listanggota) {
+
         this.listanggota = listanggota;
+        this.cardListener = cardListener;
     }
 
     @NonNull
