@@ -1,17 +1,171 @@
 package com.shukitasemua.app;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
-import com.shukitasemua.app.R;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.material.textfield.TextInputLayout;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import model.koperasi;
 
 public class edit_koperasi extends AppCompatActivity {
+
+    private TextInputLayout nama_id, shu_id, jm_id, ja_id, lainlain_id;
+    private Button button_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_koperasi);
         getSupportActionBar().hide();
+
+        nama_id = findViewById(R.id.nama_id);
+        shu_id = findViewById(R.id.shu_id);
+        jm_id = findViewById(R.id.jm_id);
+        ja_id = findViewById(R.id.ja_id);
+        lainlain_id = findViewById(R.id.lainlain_id);
+        button_id = findViewById(R.id.button_id);
+
+        String url3 = "http://192.168.100.4/progtech_SHUkitasemua/koperasi/ReadAllBarang.php";
+        RequestQueue myQueue3 = Volley.newRequestQueue(getBaseContext());
+
+        JsonObjectRequest request3 = new JsonObjectRequest(Request.Method.GET, url3, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray jsonlihat = response.getJSONArray("koperasi");
+                            JSONObject objlihat = jsonlihat.getJSONObject(0);
+
+                                String datanama = objlihat.getString("nama");
+                                double datashu = objlihat.getDouble("shu");
+                                double datajasamodal = objlihat.getDouble("jasamodal");
+                                double datajasaanggota = objlihat.getDouble("jasaanggota");
+                                double datalainlain = objlihat.getDouble("lainlain");
+
+                                nama_id.getEditText().setText(datanama);
+                                shu_id.getEditText().setText( String.valueOf(datashu));
+                                jm_id.getEditText().setText( String.valueOf(datajasamodal));
+                                ja_id.getEditText().setText( String.valueOf(datajasaanggota));
+                                lainlain_id.getEditText().setText(String.valueOf(datalainlain));
+
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                }
+        );
+
+        myQueue3.add(request3);
+
+
+
+        button_id.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent terima = getIntent();
+                String nama = nama_id.getEditText().getText().toString().trim();
+                double shu = Double.parseDouble(shu_id.getEditText().getText().toString().trim());
+                double jasamodal = Double.parseDouble(jm_id.getEditText().getText().toString().trim());
+                double jasaanggota = Double.parseDouble(ja_id.getEditText().getText().toString().trim());
+                double lainlain = Double.parseDouble(lainlain_id.getEditText().getText().toString().trim());
+
+
+                koperasi kops = new koperasi(nama,shu,jasamodal,jasaanggota,lainlain);
+                editkops(kops);
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+
+            private void editkops(koperasi kops) {
+                String url2 =  "http://192.168.100.4/progtech_SHUkitasemua/koperasi/UpdateBarang.php";
+
+                StringRequest request2 = new StringRequest(Request.Method.POST, url2,
+                        new Response.Listener<String>() {
+
+                            @Override
+                            public void onResponse(String response) {
+                                String url3 = "http://192.168.100.4/progtech_SHUkitasemua/koperasi/ReadAllBarang.php";
+                                RequestQueue myQueue3 = Volley.newRequestQueue(getBaseContext());
+
+                                JsonObjectRequest request3 = new JsonObjectRequest(Request.Method.GET, url3, null,
+                                        new Response.Listener<JSONObject>() {
+                                            @Override
+                                            public void onResponse(JSONObject response) {
+                                                try {
+                                                    JSONArray jsonlihat = response.getJSONArray("koperasi");
+                                                    JSONObject objlihat = jsonlihat.getJSONObject(0);
+
+                                                } catch (JSONException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        },
+                                        new Response.ErrorListener() {
+                                            @Override
+                                            public void onErrorResponse(VolleyError error) {
+                                                error.printStackTrace();
+                                            }
+                                        }
+                                );
+
+                                myQueue3.add(request3);
+
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                            }
+                        }
+                ){
+                    @Nullable
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> data = new HashMap<>();
+
+                        data.put("nama", kops.getNama());
+                        data.put("shu", String.valueOf(kops.getShu()));
+                        data.put("jasamodal", String.valueOf(kops.getJasamodal()));
+                        data.put("jasaanggota", String.valueOf(kops.getJasaanggota()));
+                        data.put("lainlain", String.valueOf(kops.getLainlain()));
+
+                        return data;
+                    }
+                };
+
+            }
+        });
+
     }
 }

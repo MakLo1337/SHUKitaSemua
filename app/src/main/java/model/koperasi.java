@@ -29,6 +29,15 @@ public class koperasi implements Parcelable {
         }
     };
 
+    public koperasi( String nama, double shu, double jasamodal, double jasaanggota, double lainlain) {
+        this.id = 0;
+        this.nama = nama;
+        this.shu = shu;
+        this.jasamodal = jasamodal;
+        this.jasaanggota = jasaanggota;
+        this.lainlain = lainlain;
+    }
+
     public int getId() {
         return id;
     }

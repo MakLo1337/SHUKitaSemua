@@ -78,7 +78,7 @@ private ArrayList<koperasi> kops;
         recyclerView_recyclerView.setLayoutManager(manager);
         recyclerView_recyclerView.setAdapter(adapter);
 
-        String url = "http://158.140.167.137/progtech_SHUkitasemua/ReadAllBarang.php";
+        String url = "http://192.168.100.4/progtech_SHUkitasemua/ReadAllBarang.php";
         RequestQueue myQueue = Volley.newRequestQueue(getActivity());
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -114,7 +114,7 @@ private ArrayList<koperasi> kops;
 
         myQueue.add(request);
 
-        String url2 = "http://158.140.167.137/progtech_SHUkitasemua/koperasi/ReadAllBarang.php";
+        String url2 = "http://192.168.100.4/progtech_SHUkitasemua/koperasi/ReadAllBarang.php";
         RequestQueue myQueue2 = Volley.newRequestQueue(getActivity());
 
         JsonObjectRequest request2 = new JsonObjectRequest(Request.Method.GET, url2, null,
@@ -127,6 +127,7 @@ private ArrayList<koperasi> kops;
                                 JSONObject objKoperasi = jsonKoperasi.getJSONObject(i);
                                 koperasi datakoperasi = new koperasi();
 //                                anggotabaru.setId(objAnggota.getInt("id"));
+//                                int id = objKoperasi.getInt("id");
                                 String nama = objKoperasi.getString("nama");
                                 double shu = objKoperasi.getDouble("shu");
                                 double jasamodal = objKoperasi.getDouble("jasamodal");
