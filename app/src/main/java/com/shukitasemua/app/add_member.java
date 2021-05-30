@@ -1,6 +1,5 @@
 package com.shukitasemua.app;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -46,10 +45,10 @@ private Button tambah_button;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        tambah_nama = view.findViewById(R.id.tambah_nama);
-        tambah_simpanan = view.findViewById(R.id.tambah_simpanan);
-        tambah_pembelian = view.findViewById(R.id.tambah_pembelian);
-        tambah_button = view.findViewById(R.id.tambah_button);
+        tambah_nama = view.findViewById(R.id.Tambah_nama);
+        tambah_simpanan = view.findViewById(R.id.Tambah_simpanan);
+        tambah_pembelian = view.findViewById(R.id.Tambah_pembelian);
+        tambah_button = view.findViewById(R.id.Tambah_button);
 
         tambah_button.setOnClickListener(new View.OnClickListener() {
             @Override

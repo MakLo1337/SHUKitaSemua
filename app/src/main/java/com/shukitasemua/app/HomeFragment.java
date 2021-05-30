@@ -36,7 +36,7 @@ import model.koperasi;
 public class HomeFragment extends Fragment implements OnCardListener {
 
 
-private Button edit_kops;
+private Button edit_kops, delete_anggota, edit_anggota;
 private RecyclerView recyclerView_recyclerView;
 private ArrayList<anggota> dataanggota;
 private RVAAdapter adapter;
@@ -123,8 +123,8 @@ private ArrayList<koperasi> kops;
                     public void onResponse(JSONObject response) {
                         try {
                             JSONArray jsonKoperasi = response.getJSONArray("koperasi");
-                            for (int i = 0; i < jsonKoperasi.length(); i++) {
-                                JSONObject objKoperasi = jsonKoperasi.getJSONObject(i);
+
+                                JSONObject objKoperasi = jsonKoperasi.getJSONObject(0);
                                 koperasi datakoperasi = new koperasi();
 //                                anggotabaru.setId(objAnggota.getInt("id"));
 //                                int id = objKoperasi.getInt("id");
@@ -145,7 +145,7 @@ private ArrayList<koperasi> kops;
                                 count_anggota.setText(String.valueOf(jasaanggota) + " %");
                                 count_lainlain.setText(String.valueOf(lainlain) + " %");
 
-                            }
+
                             adapter.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -172,6 +172,7 @@ private ArrayList<koperasi> kops;
         });
 
 
+
     }
 
 
@@ -179,6 +180,12 @@ private ArrayList<koperasi> kops;
     public void OnCardClick(int position) {
         int id = dataanggota.get(position).getId();
 
-
+        Intent intent = new Intent(getActivity(), com.shukitasemua.app.edit_anggota.class);
+        intent.putExtra("id", id);
+        startActivity(intent);
     }
+
+
+
+
 }

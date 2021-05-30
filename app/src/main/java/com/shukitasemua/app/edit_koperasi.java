@@ -90,7 +90,7 @@ public class edit_koperasi extends AppCompatActivity {
         button_id.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent terima = getIntent();
+                
                 String nama = nama_id.getEditText().getText().toString().trim();
                 double shu = Double.parseDouble(shu_id.getEditText().getText().toString().trim());
                 double jasamodal = Double.parseDouble(jm_id.getEditText().getText().toString().trim());
@@ -108,37 +108,13 @@ public class edit_koperasi extends AppCompatActivity {
 
             private void editkops(koperasi kops) {
                 String url2 =  "http://192.168.100.4/progtech_SHUkitasemua/koperasi/UpdateBarang.php";
-
+                RequestQueue myRequest2 = Volley.newRequestQueue(getBaseContext());
                 StringRequest request2 = new StringRequest(Request.Method.POST, url2,
                         new Response.Listener<String>() {
 
                             @Override
                             public void onResponse(String response) {
-                                String url3 = "http://192.168.100.4/progtech_SHUkitasemua/koperasi/ReadAllBarang.php";
-                                RequestQueue myQueue3 = Volley.newRequestQueue(getBaseContext());
 
-                                JsonObjectRequest request3 = new JsonObjectRequest(Request.Method.GET, url3, null,
-                                        new Response.Listener<JSONObject>() {
-                                            @Override
-                                            public void onResponse(JSONObject response) {
-                                                try {
-                                                    JSONArray jsonlihat = response.getJSONArray("koperasi");
-                                                    JSONObject objlihat = jsonlihat.getJSONObject(0);
-
-                                                } catch (JSONException e) {
-                                                    e.printStackTrace();
-                                                }
-                                            }
-                                        },
-                                        new Response.ErrorListener() {
-                                            @Override
-                                            public void onErrorResponse(VolleyError error) {
-                                                error.printStackTrace();
-                                            }
-                                        }
-                                );
-
-                                myQueue3.add(request3);
 
                             }
                         },
@@ -153,7 +129,7 @@ public class edit_koperasi extends AppCompatActivity {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> data = new HashMap<>();
-
+                        data.put("id", String.valueOf(kops.getId(0)));
                         data.put("nama", kops.getNama());
                         data.put("shu", String.valueOf(kops.getShu()));
                         data.put("jasamodal", String.valueOf(kops.getJasamodal()));
@@ -163,7 +139,7 @@ public class edit_koperasi extends AppCompatActivity {
                         return data;
                     }
                 };
-
+                myRequest2.add(request2);
             }
         });
 

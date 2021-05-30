@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tambah_nama"
+        android:id="@+id/Tambah_nama"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -41,7 +41,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tambah_simpanan"
+        android:id="@+id/Tambah_simpanan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -49,7 +49,7 @@
         android:layout_marginEnd="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tambah_nama">
+        app:layout_constraintTop_toBottomOf="@+id/Tambah_nama">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -60,7 +60,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tambah_pembelian"
+        android:id="@+id/Tambah_pembelian"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -68,7 +68,7 @@
         android:layout_marginEnd="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tambah_simpanan">
+        app:layout_constraintTop_toBottomOf="@+id/Tambah_simpanan">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -78,7 +78,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <android.widget.Button
-        android:id="@+id/tambah_button"
+        android:id="@+id/Tambah_button"
         android:layout_width="144dp"
         android:layout_height="67dp"
         android:layout_marginStart="5dp"
@@ -90,6 +90,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tambah_pembelian"
+        app:layout_constraintTop_toBottomOf="@+id/Tambah_pembelian"
         app:layout_constraintVertical_bias="0.308" />
 </androidx.constraintlayout.widget.ConstraintLayout>

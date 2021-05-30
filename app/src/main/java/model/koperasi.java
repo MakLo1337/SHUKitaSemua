@@ -38,7 +38,7 @@ public class koperasi implements Parcelable {
         this.lainlain = lainlain;
     }
 
-    public int getId() {
+    public int getId(int i) {
         return id;
     }
 
