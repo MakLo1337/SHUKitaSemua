@@ -33,7 +33,7 @@ import model.anggota;
 import model.koperasi;
 
 
-public class HomeFragment extends Fragment implements OnCardListener {
+public class HomeFragment extends Fragment implements OnCardListener , EditListener {
 
 
 private Button edit_kops, delete_anggota, edit_anggota;
@@ -90,7 +90,7 @@ private ArrayList<koperasi> kops;
                             for (int i = 0; i < jsonAnggota.length(); i++) {
                                 JSONObject objAnggota = jsonAnggota.getJSONObject(i);
                                 anggota anggotabaru = new anggota();
-//                                anggotabaru.setId(objAnggota.getInt("id"));
+                                anggotabaru.setId(objAnggota.getInt("id"));
                                 anggotabaru.setNama(objAnggota.getString("nama"));
                                 anggotabaru.setSimpanan(objAnggota.getDouble("simpanan"));
                                 anggotabaru.setPembelian(objAnggota.getDouble("pembelian"));
@@ -178,14 +178,19 @@ private ArrayList<koperasi> kops;
 
     @Override
     public void OnCardClick(int position) {
-        int id = dataanggota.get(position).getId();
-
-        Intent intent = new Intent(getActivity(), com.shukitasemua.app.edit_anggota.class);
-        intent.putExtra("id", id);
-        startActivity(intent);
+//        int id = dataanggota.get(position).getId();
+//
+//        Intent intent = new Intent(getActivity(), com.shukitasemua.app.edit_anggota.class);
+//        intent.putExtra("id", id);
+//        startActivity(intent);
     }
 
 
-
-
+    @Override
+    public void OnEdit(int position) {
+        int id = dataanggota.get(position).getId();
+        Intent intent = new Intent(getActivity(), edit_anggota.class);
+        intent.putExtra("id", id);
+        startActivity(intent);
+    }
 }

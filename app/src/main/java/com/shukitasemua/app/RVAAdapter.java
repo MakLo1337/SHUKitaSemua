@@ -32,13 +32,14 @@ import model.anggota;
 
 public class RVAAdapter extends RecyclerView.Adapter<RVAAdapter.ViewHolder>{
     private ArrayList<anggota> listanggota;
-    protected OnCardListener cardListener;
+//    protected OnCardListener cardListener;
+    protected  EditListener editListener;
 
 
-    public RVAAdapter(ArrayList<anggota> listanggota, OnCardListener onCardListener) {
-        this.cardListener = onCardListener;
+    public RVAAdapter(ArrayList<anggota> listanggota, EditListener editListener) {
+//        this.cardListener = onCardListener;
         this.listanggota = listanggota;
-
+        this.editListener = editListener;
 
     }
 
@@ -47,7 +48,7 @@ public class RVAAdapter extends RecyclerView.Adapter<RVAAdapter.ViewHolder>{
     public RVAAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.data_anggota, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, editListener);
     }
 
     @Override
@@ -68,7 +69,7 @@ public class RVAAdapter extends RecyclerView.Adapter<RVAAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView main_nama , main_simpanan, main_pembelian;
         private Button delete_anggota , edit_anggota;
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView ,EditListener editListener) {
             super(itemView);
             main_nama = itemView.findViewById(R.id.main_nama);
             main_simpanan = itemView.findViewById(R.id.main_simpanan);
@@ -76,15 +77,12 @@ public class RVAAdapter extends RecyclerView.Adapter<RVAAdapter.ViewHolder>{
             delete_anggota = itemView.findViewById(R.id.delete_anggota);
             edit_anggota = itemView.findViewById(R.id.edit_anggota);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            edit_anggota.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    cardListener.OnCardClick(getAdapterPosition());
+                    editListener.OnEdit(getAdapterPosition());
                 }
-            }
-
-
-            );
+            });
 //
         }
     }
