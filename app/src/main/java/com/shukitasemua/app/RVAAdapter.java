@@ -34,12 +34,14 @@ public class RVAAdapter extends RecyclerView.Adapter<RVAAdapter.ViewHolder>{
     private ArrayList<anggota> listanggota;
 //    protected OnCardListener cardListener;
     protected  EditListener editListener;
+    protected  DeleteListener deleteListener;
 
 
-    public RVAAdapter(ArrayList<anggota> listanggota, EditListener editListener) {
+    public RVAAdapter(ArrayList<anggota> listanggota, EditListener editListener, DeleteListener deleteListener) {
 //        this.cardListener = onCardListener;
         this.listanggota = listanggota;
         this.editListener = editListener;
+        this.deleteListener = deleteListener;
 
     }
 
@@ -48,7 +50,7 @@ public class RVAAdapter extends RecyclerView.Adapter<RVAAdapter.ViewHolder>{
     public RVAAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.data_anggota, parent, false);
-        return new ViewHolder(view, editListener);
+        return new ViewHolder(view, editListener, deleteListener);
     }
 
     @Override
@@ -69,7 +71,7 @@ public class RVAAdapter extends RecyclerView.Adapter<RVAAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView main_nama , main_simpanan, main_pembelian;
         private Button delete_anggota , edit_anggota;
-        public ViewHolder(@NonNull View itemView ,EditListener editListener) {
+        public ViewHolder(@NonNull View itemView ,EditListener editListener, DeleteListener deleteListener) {
             super(itemView);
             main_nama = itemView.findViewById(R.id.main_nama);
             main_simpanan = itemView.findViewById(R.id.main_simpanan);
@@ -83,8 +85,16 @@ public class RVAAdapter extends RecyclerView.Adapter<RVAAdapter.ViewHolder>{
                     editListener.OnEdit(getAdapterPosition());
                 }
             });
+
+            delete_anggota.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    deleteListener.OnDelete(getAdapterPosition());
+                }
+            });
 //
         }
     }
+
 
 }

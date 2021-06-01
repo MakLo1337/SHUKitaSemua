@@ -15,12 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -28,12 +31,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import model.anggota;
 import model.koperasi;
 
 
-public class HomeFragment extends Fragment implements OnCardListener , EditListener {
+public class HomeFragment extends Fragment implements EditListener, DeleteListener {
 
 
 private Button edit_kops, delete_anggota, edit_anggota;
@@ -72,7 +77,7 @@ private ArrayList<koperasi> kops;
 
         recyclerView_recyclerView = view.findViewById(R.id.recyclerView_recyclerView);
         dataanggota = new ArrayList<anggota>();
-        adapter = new RVAAdapter(dataanggota, this);
+        adapter = new RVAAdapter(dataanggota, this, this);
 
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getActivity());
         recyclerView_recyclerView.setLayoutManager(manager);
@@ -174,18 +179,6 @@ private ArrayList<koperasi> kops;
 
 
     }
-
-
-    @Override
-    public void OnCardClick(int position) {
-//        int id = dataanggota.get(position).getId();
-//
-//        Intent intent = new Intent(getActivity(), com.shukitasemua.app.edit_anggota.class);
-//        intent.putExtra("id", id);
-//        startActivity(intent);
-    }
-
-
     @Override
     public void OnEdit(int position) {
         int id = dataanggota.get(position).getId();
@@ -193,4 +186,56 @@ private ArrayList<koperasi> kops;
         intent.putExtra("id", id);
         startActivity(intent);
     }
+
+    @Override
+    public void OnDelete(int position) {
+        int id = dataanggota.get(position).getId();
+
+        String urldelete = "http://192.168.100.4/progtech_SHUkitasemua/Delete.php/" + id;
+
+        StringRequest postRequest = new StringRequest(Request.Method.POST, urldelete,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            int i = jsonObject.getInt("id");
+                            adapter.notifyDataSetChanged();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        Toast.makeText(getActivity(),"Data Dihapus",Toast.LENGTH_LONG).show();
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(),"Data gagal dihapus",Toast.LENGTH_LONG).show();
+            }
+
+        }) {
+
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> data = new HashMap<>();
+
+                data.put("id", String.valueOf(id));
+                return data;
+
+            }
+
+
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(postRequest);
+
+
+
+    }
+
+
+
+
 }
