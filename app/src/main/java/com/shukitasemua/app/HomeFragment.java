@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,11 +31,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import model.anggota;
+import model.dataAnggota;
 import model.koperasi;
 
 
@@ -43,10 +46,11 @@ public class HomeFragment extends Fragment implements EditListener, DeleteListen
 
 private Button edit_kops, delete_anggota, edit_anggota;
 private RecyclerView recyclerView_recyclerView;
-private ArrayList<anggota> dataanggota;
+//private ArrayList<anggota> dataanggota;
 private RVAAdapter adapter;
 private TextView namaKoperasi, count_shu, count_modal, count_anggota, count_lainlain;
 private ArrayList<koperasi> kops;
+private DecimalFormat df = new DecimalFormat("###,###.###");
 
 
     @Override
@@ -66,6 +70,8 @@ private ArrayList<koperasi> kops;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        df.setMaximumFractionDigits(8);
+
 
         edit_kops = view.findViewById(R.id.edit_kops);
         namaKoperasi = view.findViewById(R.id.namaKoperasi);
@@ -76,14 +82,15 @@ private ArrayList<koperasi> kops;
 
 
         recyclerView_recyclerView = view.findViewById(R.id.recyclerView_recyclerView);
-        dataanggota = new ArrayList<anggota>();
-        adapter = new RVAAdapter(dataanggota, this, this);
+//        dataanggota = new ArrayList<anggota>();
+        dataAnggota.dataanggota = new ArrayList<anggota>();
+        adapter = new RVAAdapter(dataAnggota.dataanggota, this, this);
 
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getActivity());
         recyclerView_recyclerView.setLayoutManager(manager);
         recyclerView_recyclerView.setAdapter(adapter);
 
-        String url = "http://192.168.100.4/progtech_SHUkitasemua/ReadAllBarang.php";
+        String url = "http://158.140.167.137/progtech_SHUkitasemua/ReadAllBarang.php";
         RequestQueue myQueue = Volley.newRequestQueue(getActivity());
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -100,7 +107,7 @@ private ArrayList<koperasi> kops;
                                 anggotabaru.setSimpanan(objAnggota.getDouble("simpanan"));
                                 anggotabaru.setPembelian(objAnggota.getDouble("pembelian"));
                                 anggotabaru.setJumlah(objAnggota.getDouble("jumlah"));
-                                dataanggota.add(anggotabaru);
+                                dataAnggota.dataanggota.add(anggotabaru);
 
                             }
                             adapter.notifyDataSetChanged();
@@ -119,7 +126,7 @@ private ArrayList<koperasi> kops;
 
         myQueue.add(request);
 
-        String url2 = "http://192.168.100.4/progtech_SHUkitasemua/koperasi/ReadAllBarang.php";
+        String url2 = "http://158.140.167.137/progtech_SHUkitasemua/koperasi/ReadAllBarang.php";
         RequestQueue myQueue2 = Volley.newRequestQueue(getActivity());
 
         JsonObjectRequest request2 = new JsonObjectRequest(Request.Method.GET, url2, null,
@@ -145,7 +152,7 @@ private ArrayList<koperasi> kops;
 //                                datakoperasi.setLainlain(lainlain);
 
                                 namaKoperasi.setText(nama);
-                                count_shu.setText( "Rp."+(String.valueOf(shu)));
+                                count_shu.setText( "Rp."+(String.valueOf(df.format(shu))));
                                 count_modal.setText(String.valueOf(jasamodal) + " %");
                                 count_anggota.setText(String.valueOf(jasaanggota) + " %");
                                 count_lainlain.setText(String.valueOf(lainlain) + " %");
@@ -181,7 +188,7 @@ private ArrayList<koperasi> kops;
     }
     @Override
     public void OnEdit(int position) {
-        int id = dataanggota.get(position).getId();
+        int id = dataAnggota.dataanggota.get(position).getId();
         Intent intent = new Intent(getActivity(), edit_anggota.class);
         intent.putExtra("id", id);
         startActivity(intent);
@@ -189,9 +196,9 @@ private ArrayList<koperasi> kops;
 
     @Override
     public void OnDelete(int position) {
-        int id = dataanggota.get(position).getId();
+        int id = dataAnggota.dataanggota.get(position).getId();
 
-        String urldelete = "http://192.168.100.4/progtech_SHUkitasemua/Delete.php/" + id;
+        String urldelete = "http://158.140.167.137/progtech_SHUkitasemua/Delete.php/" + id;
 
         StringRequest postRequest = new StringRequest(Request.Method.POST, urldelete,
                 new Response.Listener<String>() {
@@ -206,6 +213,9 @@ private ArrayList<koperasi> kops;
                         }
 
                         Toast.makeText(getActivity(),"Data Dihapus",Toast.LENGTH_LONG).show();
+                        FragmentTransaction t = getFragmentManager().beginTransaction();
+                        t.replace(R.id.frameLayout, new HomeFragment());
+                        t.commit();
 
                     }
                 }, new Response.ErrorListener() {

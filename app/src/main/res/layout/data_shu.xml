@@ -50,13 +50,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/main_nama" />
 
             <TextView
-                android:id="@+id/main_simpanan"
+                android:id="@+id/main_shu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="32dp"
                 android:fontFamily="@font/poppins"
-                android:text="TextView"
+                android:text="count"
                 android:textColor="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView15"

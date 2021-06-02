@@ -23,6 +23,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +36,7 @@ public class RVAAdapter extends RecyclerView.Adapter<RVAAdapter.ViewHolder>{
 //    protected OnCardListener cardListener;
     protected  EditListener editListener;
     protected  DeleteListener deleteListener;
+    private DecimalFormat df = new DecimalFormat("###,###.###");
 
 
     public RVAAdapter(ArrayList<anggota> listanggota, EditListener editListener, DeleteListener deleteListener) {
@@ -56,9 +58,10 @@ public class RVAAdapter extends RecyclerView.Adapter<RVAAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull RVAAdapter.ViewHolder holder, int position) {
 //        final anggota member = listanggota.get(position);
+        df.setMaximumFractionDigits(10);
         holder.main_nama.setText(listanggota.get(position).getNama());
-        holder.main_simpanan.setText(String.valueOf(listanggota.get(position).getSimpanan()));
-        holder.main_pembelian.setText(String.valueOf(listanggota.get(position).getPembelian()));
+        holder.main_simpanan.setText(String.valueOf(df.format(listanggota.get(position).getSimpanan())));
+        holder.main_pembelian.setText(String.valueOf(df.format(listanggota.get(position).getPembelian())));
 
 
     }

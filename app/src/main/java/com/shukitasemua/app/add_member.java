@@ -5,11 +5,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -18,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.HashMap;
@@ -60,10 +63,16 @@ private Button tambah_button;
 
                 anggota temp = new anggota(nama,simpanan,pembelian,jumlah);
                 postData(temp);
+                tambah_nama.getEditText().setText("");
+                tambah_simpanan.getEditText().setText("");
+                tambah_pembelian.getEditText().setText("");
+
+                Toast.makeText(getActivity(),"Berhasil Ditambahkan!", Toast.LENGTH_SHORT).show();
+
             }
 
             private void postData(anggota temp) {
-                String url =  "http://192.168.100.4/progtech_SHUkitasemua/CreateBarang.php";
+                String url =  "http://158.140.167.137/progtech_SHUkitasemua/CreateBarang.php";
                 RequestQueue myRequest = Volley.newRequestQueue(getActivity());
 
                 StringRequest request = new StringRequest(Request.Method.POST, url,
