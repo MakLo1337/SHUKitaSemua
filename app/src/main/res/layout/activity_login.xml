@@ -4,12 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context="com.shukitasemua.app.add_member" >
+    tools:context=".login">
 
+    <android.widget.Button
+        android:id="@+id/edit_button2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="70dp"
+        android:background="@drawable/header"
+        android:text="Simpan"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_pass" />
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar6"
+        android:id="@+id/toolbar5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#303F9F"
@@ -23,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
-            android:text="Ubah Anggota"
+            android:text="Login"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="18sp"
@@ -31,103 +45,67 @@
             tools:layout_editor_absoluteY="18dp" />
     </androidx.appcompat.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/textView"
+    <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Ubah Anggota"
-        android:textColor="#000000"
-        android:textSize="30sp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar6" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar5"
+        app:srcCompat="@drawable/shu_logo" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edit_nama"
+        android:id="@+id/login_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:textColorHint="#FFFFFF"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:errorEnabled="true"
+        app:hintTextColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/add"
-            android:hint="Nama Anggota"
-            android:textColor="#FFFFFF" />
+            android:cursorVisible="true"
+            android:hint="Username"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textCursorDrawable="@null"
+            android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edit_simpanan"
+        android:id="@+id/login_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:textColorHint="#FFFFFF"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:errorEnabled="true"
+        app:hintTextColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_nama">
+        app:layout_constraintTop_toBottomOf="@+id/login_user">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/add"
-            android:hint="Simpanan"
-            android:textColor="#FFFFFF" />
+            android:cursorVisible="true"
+            android:hint="Password"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textCursorDrawable="@null"
+            android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edit_pembelian"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:textColorHint="#FFFFFF"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_simpanan">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/add"
-            android:hint="Pembelian"
-            android:textColor="#FFFFFF" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <android.widget.Button
-        android:id="@+id/edit_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="64dp"
-        android:background="@drawable/button_selector"
-        android:text="Simpan"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_pembelian" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

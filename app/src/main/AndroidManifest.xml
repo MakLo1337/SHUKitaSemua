@@ -12,16 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SHU_kita_semua"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LoadingDialog"></activity>
-        <activity android:name=".edit_anggota" />
-        <activity android:name=".edit_koperasi" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".login"></activity>
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".edit_anggota" />
+        <activity android:name=".edit_koperasi" />
+        <activity android:name=".MainActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
