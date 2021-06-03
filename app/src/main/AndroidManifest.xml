@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SHU_kita_semua"
         android:usesCleartextTraffic="true">
-        <activity android:name=".login"></activity>
+        <activity android:name=".register"></activity>
+        <activity android:name=".login" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +23,7 @@
         </activity>
         <activity android:name=".edit_anggota" />
         <activity android:name=".edit_koperasi" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
