@@ -60,8 +60,8 @@ public class RVAAdapter extends RecyclerView.Adapter<RVAAdapter.ViewHolder>{
 //        final anggota member = listanggota.get(position);
         df.setMaximumFractionDigits(10);
         holder.main_nama.setText(listanggota.get(position).getNama());
-        holder.main_simpanan.setText(String.valueOf(df.format(listanggota.get(position).getSimpanan())));
-        holder.main_pembelian.setText(String.valueOf(df.format(listanggota.get(position).getPembelian())));
+        holder.main_simpanan.setText("Rp."+String.valueOf(df.format(listanggota.get(position).getSimpanan())));
+        holder.main_pembelian.setText("Rp."+String.valueOf(df.format(listanggota.get(position).getPembelian())));
 
 
     }

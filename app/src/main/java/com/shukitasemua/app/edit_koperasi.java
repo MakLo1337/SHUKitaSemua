@@ -4,7 +4,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 
@@ -44,6 +48,17 @@ public class edit_koperasi extends AppCompatActivity {
         ja_id = findViewById(R.id.ja_id);
         lainlain_id = findViewById(R.id.lainlain_id);
         button_id = findViewById(R.id.button_id);
+
+        button_id.setEnabled(false);
+        button_id.setTextColor(Color.GRAY);
+
+        nama_id.getEditText().addTextChangedListener(editKops);
+        shu_id.getEditText().addTextChangedListener(editKops);
+        jm_id.getEditText().addTextChangedListener(editKops);
+        ja_id.getEditText().addTextChangedListener(editKops);
+        lainlain_id.getEditText().addTextChangedListener(editKops);
+
+        final LoadingDialog dialog = new LoadingDialog(edit_koperasi.this);
 
         String url3 = "http://158.140.167.137/progtech_SHUkitasemua/koperasi/ReadAllBarang.php";
         RequestQueue myQueue3 = Volley.newRequestQueue(getBaseContext());
@@ -97,6 +112,15 @@ public class edit_koperasi extends AppCompatActivity {
                 double jasaanggota = Double.parseDouble(ja_id.getEditText().getText().toString().trim());
                 double lainlain = Double.parseDouble(lainlain_id.getEditText().getText().toString().trim());
 
+                dialog.startLoadingDialog();
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialog.dismissDialog();
+                    }
+                },1000);
+
 
                 koperasi kops = new koperasi(nama,shu,jasamodal,jasaanggota,lainlain);
                 editkops(kops);
@@ -144,4 +168,36 @@ public class edit_koperasi extends AppCompatActivity {
         });
 
     }
+
+    private TextWatcher editKops = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            boolean nameCheck = (nama_id.getEditText().length() <= 16);
+
+            if(!nameCheck){
+                button_id.setEnabled(false);
+                button_id.setTextColor(Color.GRAY);
+                nama_id.setError("Nama Tidak Boleh Lebih Dari 16 Huruf");
+            } else if (nameCheck) {
+                nama_id.setError("");
+                if (jm_id.getEditText().length() < 1 | ja_id.getEditText().length() < 1 | lainlain_id.getEditText().length() < 1 | shu_id.getEditText().length() < 1){
+                    button_id.setEnabled(false);
+                    button_id.setTextColor(Color.GRAY);
+                } else {
+                    button_id.setEnabled(true);
+                    button_id.setTextColor(Color.WHITE);
+                }
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 }

@@ -21,6 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="#303F9F"
+        app:itemIconTint="@drawable/navbar_selector"
+        app:itemTextColor="@drawable/navbar_selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

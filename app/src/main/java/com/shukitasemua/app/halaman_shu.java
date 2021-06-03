@@ -74,6 +74,7 @@ public class halaman_shu extends Fragment {
                         try {
                             JSONArray jsonKoperasi = response.getJSONArray("koperasi");
                             JSONObject objKoperasi = jsonKoperasi.getJSONObject(0);
+                            SHUdata.clear();
                             for (int i = 0; i < dataAnggota.dataanggota.size(); i++) {
                                 anggota hitungSHU = dataAnggota.dataanggota.get(i);
                                 double jasamodal = (hitungSHU.getSimpanan() / simpananKoperasi) * (((objKoperasi.getDouble("jasamodal") / 100 ) * (objKoperasi.getDouble("shu"))));

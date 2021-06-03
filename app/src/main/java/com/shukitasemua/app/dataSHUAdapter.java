@@ -31,9 +31,9 @@ public class dataSHUAdapter extends RecyclerView.Adapter<dataSHUAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull dataSHUAdapter.ViewHolder holder, int position) {
-        df.setMaximumFractionDigits(10);
+        df.setMaximumFractionDigits(0);
         holder.main_nama.setText(dataSHU.get(position).getNama());
-        holder.main_shu.setText(String.valueOf(df.format(dataSHU.get(position).getSHU())));
+        holder.main_shu.setText("Rp."+String.valueOf(df.format(dataSHU.get(position).getSHU())));
     }
 
     @Override

@@ -99,6 +99,7 @@ private DecimalFormat df = new DecimalFormat("###,###.###");
                     public void onResponse(JSONObject response) {
                         try {
                             JSONArray jsonAnggota = response.getJSONArray("anggota");
+                            dataAnggota.dataanggota.clear();
                             for (int i = 0; i < jsonAnggota.length(); i++) {
                                 JSONObject objAnggota = jsonAnggota.getJSONObject(i);
                                 anggota anggotabaru = new anggota();
@@ -138,18 +139,13 @@ private DecimalFormat df = new DecimalFormat("###,###.###");
 
                                 JSONObject objKoperasi = jsonKoperasi.getJSONObject(0);
                                 koperasi datakoperasi = new koperasi();
-//                                anggotabaru.setId(objAnggota.getInt("id"));
-//                                int id = objKoperasi.getInt("id");
+
                                 String nama = objKoperasi.getString("nama");
                                 double shu = objKoperasi.getDouble("shu");
                                 double jasamodal = objKoperasi.getDouble("jasamodal");
                                 double jasaanggota = objKoperasi.getDouble("jasaanggota");
                                 double lainlain = objKoperasi.getDouble("lainlain");
-//                                datakoperasi.setNama(nama);
-//                                datakoperasi.setShu(shu);
-//                                datakoperasi.setJasamodal(jasamodal);
-//                                datakoperasi.setJasaanggota(jasaanggota);
-//                                datakoperasi.setLainlain(lainlain);
+
 
                                 namaKoperasi.setText(nama);
                                 count_shu.setText( "Rp."+(String.valueOf(df.format(shu))));
@@ -179,7 +175,6 @@ private DecimalFormat df = new DecimalFormat("###,###.###");
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), edit_koperasi.class);
                 startActivity(intent);
-
             }
         });
 
