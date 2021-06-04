@@ -90,7 +90,7 @@ private DecimalFormat df = new DecimalFormat("###,###.###");
         recyclerView_recyclerView.setLayoutManager(manager);
         recyclerView_recyclerView.setAdapter(adapter);
 
-        String url = "http://192.168.100.4/progtech_SHUkitasemua/ReadAllBarang.php";
+        String url = "http://192.168.1.6/progtech_SHUkitasemua/ReadAllBarang.php";
         RequestQueue myQueue = Volley.newRequestQueue(getActivity());
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -127,7 +127,7 @@ private DecimalFormat df = new DecimalFormat("###,###.###");
 
         myQueue.add(request);
 
-        String url2 = "http://192.168.100.4/progtech_SHUkitasemua/koperasi/ReadAllBarang.php";
+        String url2 = "http://192.168.1.6/progtech_SHUkitasemua/koperasi/ReadAllBarang.php";
         RequestQueue myQueue2 = Volley.newRequestQueue(getActivity());
 
         JsonObjectRequest request2 = new JsonObjectRequest(Request.Method.GET, url2, null,
@@ -193,7 +193,7 @@ private DecimalFormat df = new DecimalFormat("###,###.###");
     public void OnDelete(int position) {
         int id = dataAnggota.dataanggota.get(position).getId();
 
-        String urldelete = "http://192.168.100.4/progtech_SHUkitasemua/Delete.php/" + id;
+        String urldelete = "http://192.168.1.6/progtech_SHUkitasemua/Delete.php/" + id;
 
         StringRequest postRequest = new StringRequest(Request.Method.POST, urldelete,
                 new Response.Listener<String>() {

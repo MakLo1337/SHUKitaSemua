@@ -64,7 +64,7 @@ public class register extends AppCompatActivity {
 
     }
     private void daftar(admin baru){
-        String url =  "http://192.168.100.4/progtech_SHUkitasemua/pengurus/CreateUser.php";
+        String url =  "http://192.168.1.6/progtech_SHUkitasemua/pengurus/CreateUser.php";
         RequestQueue myrequest = Volley.newRequestQueue(this);
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -82,8 +82,7 @@ public class register extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getApplicationContext(),"Gagal Mendaftar!", Toast.LENGTH_SHORT).show();
                     }
-                }
-        ){
+                }){
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
@@ -108,6 +107,8 @@ public class register extends AppCompatActivity {
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             if(reg_username.getEditText().length() < 16 && reg_password.getEditText().length() >= 4){
                 reg_button.setEnabled(true);
+                reg_username.setError("");
+                reg_password.setError("");
             }
             else{
                 reg_button.setEnabled(false);
