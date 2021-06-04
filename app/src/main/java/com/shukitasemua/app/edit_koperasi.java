@@ -59,8 +59,8 @@ public class edit_koperasi extends AppCompatActivity {
         lainlain_id.getEditText().addTextChangedListener(editKops);
 
         final LoadingDialog dialog = new LoadingDialog(edit_koperasi.this);
-
-        String url3 = "http://192.168.1.6/progtech_SHUkitasemua/koperasi/ReadAllBarang.php";
+        //158.140.167.137 <-- IP Server
+        String url3 = "http://158.140.167.137/progtech_SHUkitasemua/koperasi/ReadAllBarang.php";
         RequestQueue myQueue3 = Volley.newRequestQueue(getBaseContext());
 
         JsonObjectRequest request3 = new JsonObjectRequest(Request.Method.GET, url3, null,
@@ -131,7 +131,7 @@ public class edit_koperasi extends AppCompatActivity {
             }
 
             private void editkops(koperasi kops) {
-                String url2 =  "http://192.168.1.6/progtech_SHUkitasemua/koperasi/UpdateBarang.php";
+                String url2 =  "http://158.140.167.137/progtech_SHUkitasemua/koperasi/UpdateBarang.php";
                 RequestQueue myRequest2 = Volley.newRequestQueue(getBaseContext());
                 StringRequest request2 = new StringRequest(Request.Method.POST, url2,
                         new Response.Listener<String>() {

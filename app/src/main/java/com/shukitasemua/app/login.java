@@ -37,20 +37,13 @@ public class login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getSupportActionBar().hide();
 
-        reg_button = findViewById(R.id.login_reg);
         login_button = findViewById(R.id.login_button);
         login_user = findViewById(R.id.login_user);
         login_pass = findViewById(R.id.login_pass);
 
 
-        reg_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), register.class);
-                startActivity(intent);
-            }
-        });
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,71 +51,47 @@ public class login extends AppCompatActivity {
                 String pass = login_pass.getEditText().getText().toString().trim();
 
                 if (!user.isEmpty() || !pass.isEmpty()) {
-                    masuk(user, pass);
+                    userlogin();
                 } else {
                     login_user.setError("Masukkan Username Anda ");
                     login_pass.setError("Masukkan Password Anda");
                 }
-//
-//
-//
-                Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
             }
         });
 
     }
 
-    private void masuk(String username, String password) {
-        login_button.setVisibility(View.GONE);
-        String url = "http://192.168.1.6/progtech_SHUkitasemua/pengurus/CreateUser.php";
+    private void userlogin(){
+        String url = "http://158.140.167.137/progtech_SHUkitasemua/pengurus/login.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getBaseContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    String sukses = jsonObject.getString("sukses");
-                    JSONArray jsonArray = jsonObject.getJSONArray("admin");
-
-                    if (sukses.equals("1")) {
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject object = jsonArray.getJSONObject(i);
-                            String username = object.getString("username").trim();
-                            String password = object.getString("password").trim();
-                            String level = "admin";
-                            Toast.makeText(getBaseContext(), "berhasil masuk", Toast.LENGTH_SHORT).show();
-
-                            admin ad = new admin(username , password, level);
-                        }
-                    }
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getBaseContext(), "GAGAL Masuk!", Toast.LENGTH_SHORT).show();
+                if(response.contains("1")){
+                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(),"Wrong username or password!" + response, Toast.LENGTH_SHORT).show();
                 }
 
             }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getBaseContext(), "ERROR!", Toast.LENGTH_SHORT).show();
-                    }
-                }) {
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> data2 = new HashMap<>();
-                data2.put("username" , username);
-                data2.put("password" , password);
-
-
-                return  data2;
+                Map<String, String> params = new HashMap<>();
+                params.put("username", login_user.getEditText().getText().toString().trim());
+                params.put("password", login_pass.getEditText().getText().toString().trim());
+                return params;
             }
         };
-    requestQueue.add(stringRequest);
+
+        requestQueue.add(stringRequest);
     }
 }

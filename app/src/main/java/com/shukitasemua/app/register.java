@@ -64,7 +64,8 @@ public class register extends AppCompatActivity {
 
     }
     private void daftar(admin baru){
-        String url =  "http://192.168.1.6/progtech_SHUkitasemua/pengurus/CreateUser.php";
+        //158.140.167.137 <-- IP Server
+        String url =  "http://158.140.167.137/progtech_SHUkitasemua/pengurus/CreateUser.php";
         RequestQueue myrequest = Volley.newRequestQueue(this);
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {

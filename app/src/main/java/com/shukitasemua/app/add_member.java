@@ -82,7 +82,8 @@ private Button tambah_button;
             }
 
             private void postData(anggota temp) {
-                String url =  "http://192.168.1.6/progtech_SHUkitasemua/CreateBarang.php";
+                //158.140.167.137 <-- IP server
+                String url =  "http://158.140.167.137/progtech_SHUkitasemua/CreateBarang.php";
                 RequestQueue myRequest = Volley.newRequestQueue(getActivity());
 
                 StringRequest request = new StringRequest(Request.Method.POST, url,

@@ -63,8 +63,8 @@ public class halaman_shu extends Fragment {
             simpananKoperasi += hitung.getSimpanan();
             penjualanKoperasi += hitung.getPembelian();
         }
-
-        String url2 = "http://192.168.1.6/progtech_SHUkitasemua/koperasi/ReadAllBarang.php";
+        //158.140.167.137 <-- IP Server
+        String url2 = "http://158.140.167.137/progtech_SHUkitasemua/koperasi/ReadAllBarang.php";
         RequestQueue myQueue2 = Volley.newRequestQueue(getActivity());
 
         JsonObjectRequest request2 = new JsonObjectRequest(Request.Method.GET, url2, null,

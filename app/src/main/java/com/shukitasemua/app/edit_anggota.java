@@ -55,7 +55,8 @@ public class edit_anggota extends AppCompatActivity {
                 finish();
             }
             private void editanggota(anggota temp2){
-                String url5 =  "http://192.168.1.6/progtech_SHUkitasemua/UpdateBarang.php";
+                //158.140.167.137 <-- IP server
+                String url5 =  "http://158.140.167.137/progtech_SHUkitasemua/UpdateBarang.php";
                 RequestQueue myRequest2 = Volley.newRequestQueue(getBaseContext());
                 StringRequest request2 = new StringRequest(Request.Method.POST, url5,
                         new Response.Listener<String>() {
@@ -102,7 +103,7 @@ public class edit_anggota extends AppCompatActivity {
     }
 
     private void getData(){
-        String url4 =  "http://192.168.1.6/progtech_SHUkitasemua/ReadBarangByID.php";
+        String url4 =  "http://158.140.167.137/progtech_SHUkitasemua/ReadBarangByID.php";
         RequestQueue myQueue = Volley.newRequestQueue(this);
         JSONObject parameter = new JSONObject();
         try {
