@@ -70,7 +70,7 @@ private DecimalFormat df = new DecimalFormat("###,###.###");
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        df.setMaximumFractionDigits(8);
+        df.setMaximumFractionDigits(0);
 
 
         edit_kops = view.findViewById(R.id.edit_kops);
@@ -149,9 +149,9 @@ private DecimalFormat df = new DecimalFormat("###,###.###");
 
                                 namaKoperasi.setText(nama);
                                 count_shu.setText( "Rp."+(String.valueOf(df.format(shu))));
-                                count_modal.setText(String.valueOf(jasamodal) + " %");
-                                count_anggota.setText(String.valueOf(jasaanggota) + " %");
-                                count_lainlain.setText(String.valueOf(lainlain) + " %");
+                                count_modal.setText(String.valueOf(df.format(jasamodal)) + " %");
+                                count_anggota.setText(String.valueOf(df.format(jasaanggota)) + " %");
+                                count_lainlain.setText(String.valueOf(df.format(lainlain)) + " %");
 
 
                             adapter.notifyDataSetChanged();

@@ -26,6 +26,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,12 +36,14 @@ public class edit_koperasi extends AppCompatActivity {
 
     private TextInputLayout nama_id, shu_id, jm_id, ja_id, lainlain_id;
     private Button button_id;
+    private DecimalFormat df = new DecimalFormat("#");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_koperasi);
         getSupportActionBar().hide();
+        df.setMaximumFractionDigits(0);
 
         nama_id = findViewById(R.id.nama_id);
         shu_id = findViewById(R.id.shu_id);
@@ -78,10 +81,10 @@ public class edit_koperasi extends AppCompatActivity {
                                 double datalainlain = objlihat.getDouble("lainlain");
 
                                 nama_id.getEditText().setText(datanama);
-                                shu_id.getEditText().setText( String.valueOf(datashu));
-                                jm_id.getEditText().setText( String.valueOf(datajasamodal));
-                                ja_id.getEditText().setText( String.valueOf(datajasaanggota));
-                                lainlain_id.getEditText().setText(String.valueOf(datalainlain));
+                                shu_id.getEditText().setText( String.valueOf(df.format(datashu)));
+                                jm_id.getEditText().setText( String.valueOf(df.format(datajasamodal)));
+                                ja_id.getEditText().setText( String.valueOf(df.format(datajasaanggota)));
+                                lainlain_id.getEditText().setText(String.valueOf(df.format(datalainlain)));
 
 
 

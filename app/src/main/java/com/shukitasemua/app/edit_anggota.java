@@ -22,6 +22,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +33,7 @@ public class edit_anggota extends AppCompatActivity {
     private TextInputLayout edit_nama, edit_simpanan, edit_pembelian;
     private Button edit_button;
     private int id;
+    private DecimalFormat df = new DecimalFormat("#");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,7 @@ public class edit_anggota extends AppCompatActivity {
         getSupportActionBar().hide();
         initview();
         getData();
+        df.setMaximumFractionDigits(0);
 
 
         edit_button.setOnClickListener(new View.OnClickListener() {
@@ -123,8 +126,8 @@ public class edit_anggota extends AppCompatActivity {
                    double pembelian = dbanggota.getDouble("pembelian");
 
                    edit_nama.getEditText().setText(nama);
-                   edit_simpanan.getEditText().setText(String.valueOf(simpanan));
-                   edit_pembelian.getEditText().setText(String.valueOf(pembelian));
+                   edit_simpanan.getEditText().setText(String.valueOf(df.format(simpanan)));
+                   edit_pembelian.getEditText().setText(String.valueOf(df.format(pembelian)));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
