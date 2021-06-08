@@ -112,6 +112,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/add"
             android:hint="Data Pembelian"
+            android:inputType="number"
             android:textColor="#FFFFFF" />
     </com.google.android.material.textfield.TextInputLayout>
 
