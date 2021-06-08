@@ -57,6 +57,7 @@ public class edit_anggota extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
+
             private void editanggota(anggota temp2){
                 //158.140.167.137 <-- IP server
                 String url5 =  "http://158.140.167.137/progtech_SHUkitasemua/UpdateBarang.php";
